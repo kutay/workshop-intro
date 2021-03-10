@@ -1,0 +1,35 @@
+= Workhop Database
+:imagesdir: ./images
+// beige, black, solarized
+:revealjs_theme: solarized
+:revealjs_slideNumber: true
+:revealjs_fragmentInURL: true
+// use ?print-pdf
+:revealjs_plugin_pdf: enabled
+:revealjs_history: true
+:revealjs_previewLinks: true
+:data-uri:
+
+
+
+
+== Table of contents
+
+* Introduction to databases
+* Using sqlite3
+* Using PostgreSQL
+
+
+
+== Using sqlite3
+
+=== Python
+
+=== Java
+
+
+
+
+== Using PostgreSQL
+
+
