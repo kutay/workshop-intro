@@ -21,11 +21,41 @@
 
 
 
+== Databases
+
+=== Types of databases
+
+* There are several of databases : Relational, NoSQL, Graph, ...
+* Relational databases and SQL
+* The NoSQL movement
+
+=== mysql / postgresql
+
+* most popular open source RDBMS
+* client/server architecture
+
+=== sqlite3
+
+* embedded database (not client/server)
+* data is saved in a file
+
+
+
+
+
+
+
 == Using sqlite3
 
 === Python
 
+* You can use PySQLite or APSW
+* PySQLite is a part of the Python Standard library since Python version 2.5
+
 === Java
+
+* You need a JDBC driver
+
 
 
 
