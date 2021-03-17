@@ -17,7 +17,7 @@
 
 * Introduction to databases
 * Using sqlite3
-* Using PostgreSQL
+* Using MySQL/PostgreSQL
 
 
 
@@ -57,9 +57,12 @@
 * You need a JDBC driver
 
 
+== Using MySQL
+
+=== Python
+
+* You need to install mysql-connector-python
+** ex: pip3 install mysql-connector-python
 
 
-
-== Using PostgreSQL
-
-
+=== Java
