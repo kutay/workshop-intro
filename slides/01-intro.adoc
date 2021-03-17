@@ -1,0 +1,68 @@
+= Workhop Database
+:imagesdir: ./images
+// beige, black, solarized
+:revealjs_theme: solarized
+:revealjs_slideNumber: true
+:revealjs_fragmentInURL: true
+// use ?print-pdf
+:revealjs_plugin_pdf: enabled
+:revealjs_history: true
+:revealjs_previewLinks: true
+:data-uri:
+
+
+
+
+== Table of contents
+
+* Introduction to databases
+* Using sqlite3
+* Using MySQL/PostgreSQL
+
+
+
+== Databases
+
+=== Types of databases
+
+* There are several of databases : Relational, NoSQL, Graph, ...
+* Relational databases and SQL
+* The NoSQL movement
+
+=== mysql / postgresql
+
+* most popular open source RDBMS
+* client/server architecture
+
+=== sqlite3
+
+* embedded database (not client/server)
+* data is saved in a file
+
+
+
+
+
+
+
+== Using sqlite3
+
+=== Python
+
+* You can use PySQLite or APSW
+* PySQLite is a part of the Python Standard library since Python version 2.5
+
+=== Java
+
+* You need a JDBC driver
+
+
+== Using MySQL
+
+=== Python
+
+* You need to install mysql-connector-python
+** ex: pip3 install mysql-connector-python
+
+
+=== Java
