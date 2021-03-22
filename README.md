@@ -17,6 +17,7 @@
 * Example : Java + Maven
 * Discussion on Java and JPA
 * Example : Java + JPA
+* Discussion on authentication and user management (hashing, salting, ...)
 
 
 
