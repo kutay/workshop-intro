@@ -1,0 +1,136 @@
+= Project 1 
+:toc: left
+
+
+== Objectifs du projet
+
+On va développer une application web qui permet à des utilisateurs de poster des messages et voir les messages des autres utilisateurs.
+Ils doivent se créer un compte et s'authentifier avant de pouvoir poster un message.
+
+Il y aura un compte administrateur qui peut lister les utilisateurs inscrits et supprimer les messages qu'il souhaite.
+
+On va construire le projet petit à petit.
+
+== Architecture d'une application web
+
+Quand on parle d'une application web, on parle souvent de client et de serveur.
+Le client est dans ce cas le navigateur qui va communiquer avec un serveur, dans notre cas un serveur HTTP.
+
+A chaque action de l'utilisateur (ouverture de la page, clic sur un lien ou bouton, ...), le navigateur va envoyer une requête HTTP au serveur, et va afficher le résultat de la réponse à l'utilisateur. 
+
+Au début des sites web, chaque clic ou action chargeait une nouvelle page. On parle parfois de "Multi Page Applications". 
+Avec le temps, les développeurs voulaient quelque chose de plus dynamique car souvent, on a pas besoin de recharger toute la page après chaque action. On a alors inventé "Ajax".
+Plus récemment, on parle de Single Page Application, avec des frameworks comme React, Vue.js ou d'autres.
+Beaucoup de sites aujourd'hui sont des SPA, mais il y a encore des MPA quand on a pas besoin du côté dynamique.
+
+Dans notre cas, on va rester sur une application web classique en multi-page. 
+Pas la peine de complexifier les choses dans un premier temps. On pourra ensuite faire un SPA si tu veux.
+
+
+=== Introduction à HTTP
+
+Comme je disais, le navigateur va envoyer une requête HTTP au serveur pour chaque action de l'utilisateur.
+Je ne vais pas rentrer dans les détails du protocole HTTP, car c'est très complexe et vaste.
+
+Je ne sais pas si tu as eu des cours de réseaux ou pas, mais si tu ne vois pas trop ce qu'est http, tu peux déjà regarder ici : https://www.commentcamarche.net/contents/520-le-protocole-http
+
+On pourra en discuter plus en détail si tu veux.
+
+=== Choix du serveur http
+
+Il y a pas mal de choix en Python pour créer un serveur http, mais les plus connus sont Flask et Django.
+
+Flask est plus bas-niveau et propose moins de fonctionnalités, mais il est plus facile à prendre en main.
+Django est plus complet, mais on risque de passer plus de temps à comprendre comment Django fonctionne, plutôt que se focaliser sur notre code.
+
+On va utiliser Flask.
+
+
+== Exercices 
+
+=== Exercice 1 
+
+Objectif : s'assurer que ton pc est bien configuré pour lancer le serveur.
+
+Aller dans le répertoire python-flask et explorer le contenu.
+C'est un projet minimal qui utilise Flask.
+
+Il faut donc installer Flask sur ton pc avant de pouvoir exécuter le code.
+Voir ce lien (https://flask.palletsprojects.com/en/1.1.x/installation/) pour plus d'infos.
+
+Une fois Flask installé, tu peux lancer le serveur avec : 
+
+[source,bash]
+----
+flask run
+----
+
+Si tout se passe bien, tu devrais voir une très belle page sur http://127.0.0.1:5000/ 
+
+
+=== Exercice 2
+
+Objectif : Enregistrer les messages en base de données
+
+Actuellement, le code affiche le contenu du champ message dans la console, mais ne persiste rien du tout en base de données.
+
+La première étape va être de reprendre le code que tu as fais pour te connecter à MySQL, l'ajouter à ce projet dans une fonction séparée, ou mieux, dans un autre fichier (c'est une bonne pratique de séparer ton code).
+
+Il faudra créer une table en BDD pour les messages. Je pense que c'est intéressant d'avoir deux colonnes : une pour le contenu du message et une autre pour la date à laquelle on a envoyé le message.
+
+Enfin, il faut enregistrer le nouveau message en BDD en complétant la fonction add_message. 
+
+
+=== Exercice 3 
+
+Objectif : Lister les messages
+
+XXX
+
+
+
+=== Exercice 4
+
+Objectif : Ajouter la création de compte
+
+XXX
+
+=== Exercice 5
+
+Objectif : Ajouter l'authentification
+
+XXX
+
+=== Exercice 6
+
+Objectif : Modifier le stockage du message pour ajouter les infos sur l'utilisateur
+
+XXX
+
+
+=== Exercice 7
+
+Objectif : Ajouter un compte admin
+
+XXX
+
+
+=== Exercice 8
+
+Objectif : Donner la possibilité à l'admin de supprimer un message
+
+XXX
+
+
+=== Exercice 9
+
+Objectif : Créer une nouvelle page pour lister les utilisateurs inscrits
+
+XXX
+
+
+=== Exercice 10
+
+Objectif : Protéger les pages 
+
+XXX
