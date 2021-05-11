@@ -85,27 +85,88 @@ Enfin, il faut enregistrer le nouveau message en BDD en complétant la fonction 
 
 Objectif : Lister les messages
 
-XXX
+Cette fois, on va tout simplement lister les messages en base de données.
 
+Il faut d'un côté récupérer les messages de Mysql et ensuite les afficher.
+
+On peut afficher les messages dans la page d'accueil, en dessous du formulaire d'ajout de message.
+
+Je te laisse regarder la page sur les templates Flask : https://flask.palletsprojects.com/en/1.1.x/quickstart/#rendering-templates
+
+Il faudra que tu regardes comment passer les messages du code python au template, et comment les afficher dans la page html. 
+Pas besoin de faire un truc compliqué, un simple listing suffit.
 
 
 === Exercice 4
 
 Objectif : Ajouter la création de compte
 
-XXX
+On s'attaque aux choses sérieuses. 
+Pour l'instant, nos messages sont anonymes et n'importe qui peut écrire.
+On va donc implémenter la gestion des utilisateurs.
+
+On va d'abord créer une nouvelle page accessible à l'adresse http://localhost:5000/signup par exemple.
+Sur cette page, il y a tout simplement un formulaire avec quelques champs (nom d'utilisateur, mot de passe, email, ... )
+
+Quand on valide le formulaire, le serveur reçoit une requête et va ajouter le nouvel utilisateur.
+
+Il faut évidemment créer la table etc.. Mais surtout, réfléchir à comment stocker le mot de passe.
+Je te laisse regarder ce lien : https://pboyd.io/posts/how-not-to-store-passwords/
+
+Il faudra également ajouter un identifiant à l'utilisateur. A toi de voir si tu veux utiliser un id auto-incrémenté, ou bien un uuid.
+
+Question(s) : 
+
+* Pourquoi on utilise un id? Quel est l'intérêt?
+
 
 === Exercice 5
 
 Objectif : Ajouter l'authentification
 
-XXX
+C'est très bien, on peut se créer un compte... Mais je peux pas l'utiliser!
+
+La prochaine étape est donc de créer une page de connexion avec un formulaire basique, et le serveur va vérifier que l'utilisateur existe et que le mot de passe est bon.
+
+Tu vas pouvoir t'inspirer de tout ce que tu as fait jusqu'à présent.
+
+Mais il y a un problème, comment stocker le fait que l'utilisateur s'est connecté?
+On va utiliser le concept de "sessions".
+
+Pour chaque requête http, tu as un objet "request" et un objet "response", mais également un objet "session" qui va te permettre de stocker des données qui ne seront pas perdues entre chaque requête.
+
+[source,python]
+----
+from flask import abort, session, redirect, url_for, render_template
+
+app = Flask(__name__)
+app.secret_key = b'_5#ax2L"FaQ4z\n\xec]/'
+
+@app.route('/xxx', methods=['POST'])
+def xxx():
+
+    if 'username' in session:
+        print(session['username'])        
+
+    session['username'] = "john"
+
+    return redirect(url_for('home'))
+----
+
+Donc, si l'utilisateur s'authentifie avec succès, tu vas pouvoir ajouter dans la session tout ce que tu veux (username, ...).
+
+Pour activer les sessions, il ne faut pas oublier l'import et l'ajout d'une clé secrète.
+ 
 
 === Exercice 6
 
 Objectif : Modifier le stockage du message pour ajouter les infos sur l'utilisateur
 
-XXX
+On sait maintenant à tout moment quel utilisateur est connecté.
+
+On peut donc modifier le code pour lier l'utilisateur à chaque message posté, et on va aussi modifier la liste des messages affichés dans home pour indiquer qui a écrit le message.
+
+A ton avis, quel concept on utilise pour faire ce lien?
 
 
 === Exercice 7
@@ -134,3 +195,20 @@ XXX
 Objectif : Protéger les pages 
 
 XXX
+
+=== Exercice 11
+
+Objectif : Ajouter des tests unitaires
+
+XXX
+
+=== Exercice 12
+
+Objectif : Déployer l'application sur internet
+
+XXX
+
+=== Exercice 13 : Bonus
+
+* Comptes doublons
+* sql injection
