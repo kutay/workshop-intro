@@ -173,28 +173,73 @@ A ton avis, quel concept on utilise pour faire ce lien?
 
 Objectif : Ajouter un compte admin
 
-XXX
+On pourrait très bien ajouter un utilisateur "admin", et tester partout si l'utilisateur est admin (ou pas) avant d'autoriser une action.
+Ca peut marcher car notre projet est petit, mais c'est pas flexible et pas très propre.
+
+On va plutôt s'inspirer de RBAC (role-based access control).
+On va donc ajouter une colonne "role" dans la table des utilisateurs qui peut contenir "admin" ou "user".
+
+Pour créer un administrateur, on va directement utiliser MySQL. 
+On pourra voir d'autres techniques pour créer un compte admin de manière simple et sécurisée.
+
+Question(s) : 
+
+* Pourquoi c'est plus flexible d'utiliser RBAC et pas se baser uniquement sur le nom de l'utilisateur? Quelle est la principale limite à ton avis?
 
 
 === Exercice 8
 
 Objectif : Donner la possibilité à l'admin de supprimer un message
 
-XXX
+Cela devient plus intéressant.
+On va ajouter un bouton "Supprimer" à côté de chaque message, mais qui sera visible seulement par les administrateurs.
+
+Tu as déjà vu tous les concepts pour implémenter cela.
+
+Il faudra bien vérifier que seuls les admins peuvent voir ce bouton.
+
+Question(s) : 
+
+* Comment identifier un message? Il manque quelque chose non?
 
 
 === Exercice 9
 
 Objectif : Créer une nouvelle page pour lister les utilisateurs inscrits
 
-XXX
+Cela devrait être assez simple.
+Il faut ajouter une nouvelle page qui permets de lister les utilisateurs.
+C'est un peu comme l'exercice pour lister les messages.
 
+On en profite pour ajouter un lien vers cette page dans le menu en haut, visible seulement par les admins.
 
 === Exercice 10
 
 Objectif : Protéger les pages 
 
-XXX
+Le problème, c'est que notre site n'est pas vraiment sécurisé... 
+
+Par exemple, le lien vers la page des utilisateurs n'est pas visible par les utilisateurs normaux, mais si tu tapes directement l'url de cette page, elle est accessible. 
+
+C'est un point important en sécurité, il ne suffit pas de cacher ou protéger côté client (ici le navigateur), mais c'est la responsabilité du serveur de valider chaque requête.
+
+Il y a plein de façons de sécuriser et protéger les pages, mais vu que l'on a pas beaucoup de page, on va le faire "simplement".
+
+Pour chaque route que l'on veut protéger, on va vérifier en début de fonction si l'utilisateur est bien connecté et qu'il a les bons droits.
+S'il est autorisé à voir cette page, pas de souci, on continue l'exécution, sinon, on redirige vers la page de login.
+
+
+Bonus : Masquer l'existence de la page protégée
+
+Si tu remarques bien, si je suis connecté en tant qu'utilisateur normal et que je vais sur la page des utilisateurs, je vais être redirigé vers la page de login.
+C'est bien. Mais le problème, c'est que l'utilisateur comprends qu'il y a une page disponible à cette adresse. 
+Dans certains contextes, on ne veut même pas dévoiler cette information (que la page existe). Du coup, certains vont plus loin et vont afficher "Page non trouvée" plutôt que rediriger vers la page de login.
+
+Ainsi, si un utilisateur essaye d'accéder à cette page, on pourrait renvoyer une erreur et dire page non trouvée.
+Quel est le code d'erreur HTTP qui permets de faire cela?
+
+
+
 
 === Exercice 11
 
